@@ -14,7 +14,7 @@ int main(int argc, char const *argv[])
 
     struct mensaje * msj;
     char message[20];
-    int a = 0, b = 0, c = 0, nbd = 0, idRecibido = 0, idEsperado = 0;
+    int a = 0, b = 0, c = 0, nbd = 0, idRecibido = 0, idEsperado = 0, tmp = 0;
 
 	Respuesta respuesta = Respuesta(7200);
 
@@ -40,6 +40,7 @@ int main(int argc, char const *argv[])
                 nbd = 0;
             }
             sscanf(msj->arguments, "%d", &c);
+            tmp = nbd;
             nbd += c;
             sprintf(message, "%d", nbd);
             c = 0;
@@ -59,6 +60,8 @@ int main(int argc, char const *argv[])
      {
         respuesta.sendReply(message);
         idEsperado = idRecibido + 1;
+        cout << "Saldo actual: $" << tmp << ".00" << endl;
+        cout << "Nuevo saldo: $" << nbd << ".00" << endl;
      }
   }
     
