@@ -29,11 +29,11 @@ struct mensaje * Respuesta::getRequest(void)
         char * ipRemota = paquete_recv.obtieneDireccion();
         int puertoRemoto = paquete_recv.obtienePuerto();
         
-        //cout << "Request ID: " << paquete_recv.obtieneMensaje()->requestId << endl;
+        cout << "Request ID: " << paquete_recv.obtieneMensaje()->requestId << endl;
 
         // Obtener numeros de la cadena y operarlos
 
-        //cout << "Depósito : $" << paquete_recv.obtieneMensaje()->arguments << ".00" <<endl;
+        cout << "Depósito : $" << paquete_recv.obtieneMensaje()->arguments << ".00" <<endl;
     }
 
 	return paquete_recv.obtieneMensaje();

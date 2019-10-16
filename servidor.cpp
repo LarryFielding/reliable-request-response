@@ -14,7 +14,7 @@ int main(int argc, char const *argv[])
 
     struct mensaje * msj;
     char message[20];
-    int a = 0, b = 0, c = 0, nbd = 0;
+    int a = 0, b = 0, c = 0, nbd = 0, idRecibido = 0, idEsperado = 0;
 
 	Respuesta respuesta = Respuesta(7200);
 
@@ -33,6 +33,12 @@ int main(int argc, char const *argv[])
      		break;
         case deposito:
             // Obtiene números de la cadena:
+            idRecibido = msj->requestId;
+            if (idRecibido == 1)
+            {
+                idEsperado = 0;
+                nbd = 0;
+            }
             sscanf(msj->arguments, "%d", &c);
             nbd += c;
             sprintf(message, "%d", nbd);
@@ -43,7 +49,17 @@ int main(int argc, char const *argv[])
      		break;
      }
 
-     respuesta.sendReply(message);
+     // Condición inicial
+     if (idEsperado == 0)
+     {
+         idEsperado = 1;
+     }
+
+     if (idEsperado == idRecibido)
+     {
+        respuesta.sendReply(message);
+        idEsperado = idRecibido + 1;
+     }
   }
     
 	return 0;
