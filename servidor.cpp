@@ -33,7 +33,7 @@ int main(int argc, char const *argv[])
             memset(message, 0, sizeof(message));
      		break;
         case deposito:
-        //TODO: caMBIar la logica, tambien responder si no llega:
+
             idRecibido = msj->requestId;
             if (idRecibido == 1)
             {
